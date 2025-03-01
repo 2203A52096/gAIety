@@ -14,7 +14,7 @@ import pickle
 import random
 
 # Load trained Random Forest model
-model = pickle.load(open("random_forest_model.pkl", "rb"))
+model = pickle.load(open("model.pkl", "rb"))
 
 # Country encoding mapping (Modify based on your dataset)
 country_mapping = {
