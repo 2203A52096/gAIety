@@ -41,7 +41,7 @@ It consists of data from **2020 to 2024**, covering multiple countries, with fea
 2. Convert categorical data into numerical (e.g., encoding Country name).
 3. Normalize numerical values for better model performance.
 
-##📊 Exploratory Data Analysis (EDA)
+## 📊 Exploratory Data Analysis (EDA)
 
 Visualize trends over the years 
 1. box plots
@@ -49,24 +49,24 @@ Visualize trends over the years
 3. pair plot
 4. skewness graph to see if the distribution is balanced
 
-##🎯 Machine Learning Model
+## 🎯 Machine Learning Model
 1️⃣ Model Used: Random Forest Regressor, Linear Regression
 A Random Forest Regression model was trained to predict Healthy Life Expectancy using all other features.
 
-##2️⃣ Model Performance
+## 2️⃣ Model Performance
 1. Mean Squared Error (MSE): 0.0109 for Random Forest Regressor and 0.0178 for Linear Regression
 2. The low error indicates the model performs well in predicting Healthy Life Expectancy based on the given features.
 3. r2 error is alos found
 
-##Feature Importance Ranking is caluclated
+## Feature Importance Ranking is caluclated
 
-##🎨 Streamlit Web App
-##Features of the App
+## 🎨 Streamlit Web App
+## Features of the App
 1. **Home Page** - Displays famous happiness quotes from philanthropists.
 2. **Predictions Page** - Allows users to select a country and predict Healthy Life Expectancy.
 3. **Jokes Page** - Displays a random joke to entertain users.
 
-##📌 Future Improvements
+## 📌 Future Improvements
 1. More interactive visualizations (e.g., box plots, scatter plots).
 2. Experiment with different ML models for comparison.
 3. Cluster analysis to group countries based on happiness scores.
