@@ -16,8 +16,10 @@ import os
 
 # Load the model
 model_path = os.path.join(os.getcwd(), "model.pkl")
-with open(model_path, "rb") as file:
-    model = pickle.load(file)
+
+if os.path.exists(model_path) and os.path.getsize(model_path) > 0:
+    with open(model_path, "rb") as file:
+        model = pickle.load(file)
 
 # Country encoding mapping
 country_mapping = {
