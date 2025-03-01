@@ -51,7 +51,7 @@ page = st.sidebar.radio("Select a Page", ["🏠 Home", "🔮 Predictions", "😂
 
 # Home Page
 if page == "🏠 Home":
-    st.title("😊 Welcome to the Happiness Report Web App!")
+    st.title("😊 Welcome to the Happiness Report Web App!~ gAIety")
     st.markdown("### 🌍 Discover the Factors That Contribute to Happiness!")
     st.markdown("---")
     st.subheader("📜 Famous Happiness Quotes")
