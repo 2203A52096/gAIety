@@ -12,15 +12,14 @@ import pandas as pd
 import numpy as np
 import pickle
 import random
-
 import os
 
+# Load the model
 model_path = os.path.join(os.getcwd(), "model.pkl")
 with open(model_path, "rb") as file:
     model = pickle.load(file)
 
-
-# Country encoding mapping (Modify based on your dataset)
+# Country encoding mapping
 country_mapping = {
     0: "USA", 1: "Canada", 2: "Germany", 3: "India", 4: "Japan",
     5: "Australia", 6: "France", 7: "Brazil", 8: "UK", 9: "China"
@@ -44,51 +43,59 @@ jokes = [
 ]
 
 # Sidebar navigation
-st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Home", "Predictions", "Jokes"])
+st.sidebar.title("🌟 Navigation")
+st.sidebar.markdown("---")
+page = st.sidebar.radio("Select a Page", ["🏠 Home", "🔮 Predictions", "😂 Jokes"])
 
 # Home Page
-if page == "Home":
+if page == "🏠 Home":
     st.title("😊 Welcome to the Happiness Report Web App!")
-    st.subheader("Famous Happiness Quotes:")
+    st.markdown("### 🌍 Discover the Factors That Contribute to Happiness!")
+    st.markdown("---")
+    st.subheader("📜 Famous Happiness Quotes")
     for q in quotes:
-        st.write(f"📜 {q}")
+        st.markdown(f"✅ *{q}*")
 
 # Predictions Page
-elif page == "Predictions":
+elif page == "🔮 Predictions":
     st.title("🔮 Predict Healthy Life Expectancy")
-
+    st.markdown("---")
+    
     # Select country
-    country = st.selectbox("Select a Country:", list(inverse_mapping.keys()))
+    country = st.selectbox("🌍 Select a Country:", list(inverse_mapping.keys()))
     country_encoded = inverse_mapping[country]
 
     # User input for all numerical features
-    happiness_rank = st.number_input("Happiness Rank", min_value=1, max_value=200, value=50)
-    happiness_score = st.slider("Happiness Score", 0.0, 10.0, 5.0)
-    upper_whisker = st.slider("Upper Whisker", 0.0, 10.0, 5.5)
-    lower_whisker = st.slider("Lower Whisker", 0.0, 10.0, 4.5)
-    gdp = st.slider("Economy (GDP per Capita)", 0.0, 2.0, 1.0)
-    social_support = st.slider("Social Support", 0.0, 1.5, 0.8)
-    freedom = st.slider("Freedom to Make Life Choices", 0.0, 1.5, 0.5)
-    generosity = st.slider("Generosity", -0.5, 0.5, 0.1)
-    corruption = st.slider("Perceptions of Corruption", 0.0, 1.0, 0.3)
-    year = st.selectbox("Year", [2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030])
-
+    happiness_rank = st.number_input("📊 Happiness Rank", min_value=1, max_value=200, value=50)
+    happiness_score = st.slider("😊 Happiness Score", 0.0, 10.0, 5.0)
+    upper_whisker = st.slider("📈 Upper Whisker", 0.0, 10.0, 5.5)
+    lower_whisker = st.slider("📉 Lower Whisker", 0.0, 10.0, 4.5)
+    gdp = st.slider("💰 Economy (GDP per Capita)", 0.0, 2.0, 1.0)
+    social_support = st.slider("👫 Social Support", 0.0, 1.5, 0.8)
+    freedom = st.slider("🕊️ Freedom to Make Life Choices", 0.0, 1.5, 0.5)
+    generosity = st.slider("🎁 Generosity", -0.5, 0.5, 0.1)
+    corruption = st.slider("⚖️ Perceptions of Corruption", 0.0, 1.0, 0.3)
+    year = st.selectbox("📅 Year", [2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030])
+    
     # Prepare input features
     features = [country_encoded, happiness_rank, happiness_score, upper_whisker, lower_whisker,
                 gdp, social_support, freedom, generosity, corruption, year]
-
+    
     # Make prediction
-    if st.button("Predict"):
+    if st.button("🚀 Predict", use_container_width=True):
         prediction = model.predict([features])[0]
-        st.subheader(f"Predicted Healthy Life Expectancy for {country}:")
-        st.write(f"🌍 **{prediction:.2f} years**")
+        st.success(f"🎯 Predicted Healthy Life Expectancy for **{country}**: **{prediction:.2f} years**")
 
 # Jokes Page
-elif page == "Jokes":
+elif page == "😂 Jokes":
     st.title("😂 Let's Laugh!")
     st.subheader("Here's a joke for you:")
-    st.write(f"🎭 {random.choice(jokes)}")
-    if st.button("Get Another Joke"):
-        st.session_state.joke = random.choice(jokes)  # Update joke
+    
+    if "joke" not in st.session_state:
+        st.session_state.joke = random.choice(jokes)
+    
+    st.markdown(f"🎭 *{st.session_state.joke}*")
+    
+    if st.button("🤣 Get Another Joke", use_container_width=True):
+        st.session_state.joke = random.choice(jokes)
         st.rerun()
