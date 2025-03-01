@@ -66,6 +66,17 @@ A Random Forest Regression model was trained to predict Healthy Life Expectancy 
 2. **Predictions Page** - Allows users to select a country and predict Healthy Life Expectancy.
 3. **Jokes Page** - Displays a random joke to entertain users.
 
+## 🛠 Built With  
+
+- **Python**  
+- **Pandas**  
+- **NumPy**  
+- **Matplotlib**  
+- **Seaborn**  
+- **Scikit-learn**  
+- **Streamlit**  
+- **Pickle**
+  
 ## 📌 Future Improvements
 1. More interactive visualizations (e.g., box plots, scatter plots).
 2. Experiment with different ML models for comparison.
