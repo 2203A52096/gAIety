@@ -72,7 +72,7 @@ elif page == "Predictions":
     freedom = st.slider("Freedom to Make Life Choices", 0.0, 1.5, 0.5)
     generosity = st.slider("Generosity", -0.5, 0.5, 0.1)
     corruption = st.slider("Perceptions of Corruption", 0.0, 1.0, 0.3)
-    year = st.selectbox("Year", [2020, 2021, 2022, 2023, 2024])
+    year = st.selectbox("Year", [2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030])
 
     # Prepare input features
     features = [country_encoded, happiness_rank, happiness_score, upper_whisker, lower_whisker,
@@ -90,4 +90,5 @@ elif page == "Jokes":
     st.subheader("Here's a joke for you:")
     st.write(f"🎭 {random.choice(jokes)}")
     if st.button("Get Another Joke"):
-        st.experimental_rerun()
+    st.session_state.joke = random.choice(jokes)  # Update joke
+    st.rerun()
