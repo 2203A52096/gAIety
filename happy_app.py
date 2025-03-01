@@ -13,8 +13,12 @@ import numpy as np
 import pickle
 import random
 
-# Load trained Random Forest model
-model = pickle.load(open("model.pkl", "rb"))
+import os
+
+model_path = os.path.join(os.getcwd(), "model.pkl")
+with open(model_path, "rb") as file:
+    model = pickle.load(file)
+
 
 # Country encoding mapping (Modify based on your dataset)
 country_mapping = {
