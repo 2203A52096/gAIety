@@ -90,5 +90,5 @@ elif page == "Jokes":
     st.subheader("Here's a joke for you:")
     st.write(f"🎭 {random.choice(jokes)}")
     if st.button("Get Another Joke"):
-    st.session_state.joke = random.choice(jokes)  # Update joke
-    st.rerun()
+        st.session_state.joke = random.choice(jokes)  # Update joke
+        st.rerun()
